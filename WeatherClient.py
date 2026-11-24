@@ -11,7 +11,7 @@
 import socket
 
 SERVER_HOST = "127.0.0.1"  # Do not change this
-SERVER_PORT = 12345
+SERVER_PORT = 16767
 
 
 def connect_to_server():
@@ -64,6 +64,17 @@ def process_weather_data(data):
     Each city list should look like:
     [city, country, temperature]
     """
+    cities = []
+
+    # Separate the data into individual city records.
+    records = data.splitlines()
+
+    for record in records:
+        # Separate each record into its five fields.
+        information = record.split("|")
+        cities.append(information)
+    
+    return cities
 
     pass
 
@@ -88,6 +99,9 @@ def display_all_cities(cities):
     - Use print() to display the information.
     -------------------------------------------------------
     """
+    for city in cities:
+        print(f"{city[0]}, {city[1]}, {city[2]}°C")
+
 
     pass
 
@@ -111,6 +125,13 @@ def search_city(cities):
     - Display a message if the city cannot be found.
     -------------------------------------------------------
     """
+    city_name = str(input("Enter a city name: "))
+    
+    for i in cities:
+        if city_name in cities:
+            print
+        else:
+            print("Sorry, the city cannot be found.")
 
     pass
 
