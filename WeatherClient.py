@@ -76,7 +76,7 @@ def process_weather_data(data):
     
     return cities
 
-    pass
+    
 
 
 def display_all_cities(cities):
@@ -103,7 +103,7 @@ def display_all_cities(cities):
         print(f"{city[0]}, {city[1]}, {city[2]}°C")
 
 
-    pass
+    
 
 
 def search_city(cities):
@@ -125,15 +125,17 @@ def search_city(cities):
     - Display a message if the city cannot be found.
     -------------------------------------------------------
     """
-    city_name = str(input("Enter a city name: "))
-    
-    for i in cities:
-        if city_name in cities:
-            print
-        else:
-            print("Sorry, the city cannot be found.")
+    city_name = input("Enter a city name: ").strip()
+    found = False
 
-    pass
+    for city in cities:
+        if city[0].lower() == city_name.lower():
+            print(f"{city[0]}, {city[1]}, {city[2]}")
+            found = True
+    if found == False:
+        print("Sorry, the city cannot be found.")
+
+    
 
 
 def display_menu():
